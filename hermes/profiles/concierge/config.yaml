@@ -24,7 +24,7 @@ tool_output:
   max_bytes: 20000
   max_lines: 500
 
-worktree: true
+worktree: false
 
 compression:
   enabled: true
