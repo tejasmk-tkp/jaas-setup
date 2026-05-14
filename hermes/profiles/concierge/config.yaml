@@ -27,7 +27,7 @@ tool_output:
 worktree: false
 
 compression:
-  enabled: false
+  enabled: true
   threshold: 0.70
   target_ratio: 0.20
   protect_last_n: 20
@@ -46,6 +46,7 @@ auxiliary:
     model: ""
     provider: "auto"
     base_url: null
+    context_length: 65536
 
   vision:
     provider: "auto"
@@ -54,6 +55,7 @@ auxiliary:
     api_key: ""
     timeout: 120
     download_timeout: 30
+    context_length: 65536
 
   web_extract:
     provider: "auto"
@@ -61,6 +63,7 @@ auxiliary:
     base_url: ""
     api_key: ""
     timeout: 360
+    context_length: 65536
 
   approval:
     provider: "auto"
@@ -68,6 +71,7 @@ auxiliary:
     base_url: ""
     api_key: ""
     timeout: 30
+    context_length: 65536
 
   session_search:
     provider: "auto"
@@ -77,6 +81,7 @@ auxiliary:
     timeout: 30
     max_concurrency: 3
     extra_body: {}
+    context_length: 65536
 
   skills_hub:
     provider: "auto"
@@ -84,6 +89,7 @@ auxiliary:
     base_url: ""
     api_key: ""
     timeout: 30
+    context_length: 65536
 
   mcp:
     provider: "auto"
@@ -91,6 +97,7 @@ auxiliary:
     base_url: ""
     api_key: ""
     timeout: 30
+    context_length: 65536
 
   triage_specifier:
     provider: "auto"
@@ -98,6 +105,7 @@ auxiliary:
     base_url: ""
     api_key: ""
     timeout: 120
+    context_length: 65536
 
 display:
   tool_progress: off
@@ -151,7 +159,7 @@ browser:
 timezone: "Asia/Kolkata"
 
 security:
-  redact_secrets: false # Redact API key patterns in tool output and logs (off by default)
+  redact_secrets: true # Redact API key patterns in tool output and logs (off by default)
   tirith_enabled: true # Enable Tirith security scanning for terminal commands
   tirith_path: "tirith" # Path to tirith binary (default: "tirith" in $PATH)
   tirith_timeout: 5 # Seconds to wait for tirith scan before timing out
