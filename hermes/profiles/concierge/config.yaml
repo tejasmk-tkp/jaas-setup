@@ -1,0 +1,172 @@
+model:
+  provider: custom
+  base_url: http://127.0.0.1:8080/v1
+  model_name: Qwen3.5-0.8B-UD-Q4_K_XL
+  context_length: 65536
+
+terminal:
+  backend: local # local | docker | ssh | modal | daytona | vercel_sandbox | singularity
+  cwd: "/home/jaas" # Gateway/cron working directory (CLI always uses launch dir)
+  timeout: 86400 # Per-command timeout in seconds
+
+skills:
+  guard_agent_created: true
+
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  memory_char_limit: 2200 # ~800 tokens
+  user_char_limit: 1375 # ~500 tokens
+
+file_read_max_chars: 30000
+
+tool_output:
+  max_bytes: 20000
+  max_lines: 500
+
+worktree: true
+
+compression:
+  enabled: true
+  threshold: 0.70
+  target_ratio: 0.20
+  protect_last_n: 20
+  hygiene_hard_message_limit: 400
+
+context:
+  engine: "compressor"
+
+agent:
+  max_turns: 90
+  api_max_retries: 3
+  tool_use_enforcement: true
+
+auxiliary:
+  compression:
+    model: ""
+    provider: "auto"
+    base_url: null
+
+  vision:
+    provider: "auto"
+    model: ""
+    base_url: ""
+    api_key: ""
+    timeout: 120
+    download_timeout: 30
+
+  web_extract:
+    provider: "auto"
+    model: ""
+    base_url: ""
+    api_key: ""
+    timeout: 360
+
+  approval:
+    provider: "auto"
+    model: ""
+    base_url: ""
+    api_key: ""
+    timeout: 30
+
+  session_search:
+    provider: "auto"
+    model: ""
+    base_url: ""
+    api_key: ""
+    timeout: 30
+    max_concurrency: 3
+    extra_body: {}
+
+  skills_hub:
+    provider: "auto"
+    model: ""
+    base_url: ""
+    api_key: ""
+    timeout: 30
+
+  mcp:
+    provider: "auto"
+    model: ""
+    base_url: ""
+    api_key: ""
+    timeout: 30
+
+  triage_specifier:
+    provider: "auto"
+    model: ""
+    base_url: ""
+    api_key: ""
+    timeout: 120
+
+display:
+  tool_progress: off
+  tool_progress_command: false
+  interim_assistant_messages: false
+  skin: default
+  compact: false
+  resume_display: minimal
+  bell_on_complete: false
+  show_reasoning: false
+  streaming: false
+  show_cost: false
+  tool_preview_length: 0
+  runtime_footer:
+    enabled: false
+  language: en
+
+privacy:
+  redact_pii: true
+
+streaming:
+  enabled: false
+  transport: off
+  edit_interval: 0.3
+  buffer_threshold: 40
+  cursor: " ▉"
+  fresh_final_after_seconds: 60
+
+group_sessions_per_user: false
+unauthorized_dm_behavior: ignore
+
+human_delay:
+  mode: off
+
+web:
+  search_backend: "searxng"
+
+browser:
+  inactivity_timeout: 120
+  command_timeout: 30
+  record_sessions: false
+  cdp_url: ""
+  dialog_policy: must_respond
+  dialog_timeout_s: 300
+  camofox:
+    managed_persistence: false
+    user_id: ""
+    session_key: ""
+    adopt_existing_tab: false
+
+timezone: "Asia/Kolkata"
+
+security:
+  redact_secrets: false # Redact API key patterns in tool output and logs (off by default)
+  tirith_enabled: true # Enable Tirith security scanning for terminal commands
+  tirith_path: "tirith" # Path to tirith binary (default: "tirith" in $PATH)
+  tirith_timeout: 5 # Seconds to wait for tirith scan before timing out
+  tirith_fail_open: true # Allow command execution if tirith is unavailable
+  website_blocklist: # See Website Blocklist section below
+    enabled: false
+    domains: []
+    shared_files: []
+
+approvals:
+  mode: smart
+
+checkpoints:
+  enabled: true
+  max_snapshots: 20
+
+clarify:
+  timeout: 86400
