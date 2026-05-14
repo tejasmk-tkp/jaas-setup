@@ -9,7 +9,9 @@ terminal:
   cwd: "/home/jaas" # Gateway/cron working directory (CLI always uses launch dir)
   timeout: 86400 # Per-command timeout in seconds
 
+toolsets: []
 skills:
+  preload: []
   guard_agent_created: true
 
 memory:
